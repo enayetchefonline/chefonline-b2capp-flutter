@@ -56,7 +56,27 @@ class AppRouter {
             routes: <RouteBase>[
               GoRoute(
                 path: '/search',
-                builder: (context, state) => const SearchScreen(),
+                // builder: (context, state) => const SearchScreen(),
+                pageBuilder: (BuildContext context, GoRouterState state) {
+                  final bool loggedIn = true;
+                  return CustomTransitionPage<void>(
+                    key: state.pageKey,
+                    child: SearchScreen(),
+                    barrierDismissible: true,
+                    barrierColor: Colors.black38,
+                    opaque: false,
+                    transitionDuration: const Duration(milliseconds: 500),
+                    reverseTransitionDuration: const Duration(milliseconds: 200),
+                    transitionsBuilder: (
+                        BuildContext context,
+                        Animation<double> animation,
+                        Animation<double> secondaryAnimation,
+                        Widget child,
+                        ) {
+                      return FadeTransition(opacity: animation, child: child);
+                    },
+                  );
+                },
               ),
             ],
           ),
@@ -66,7 +86,27 @@ class AppRouter {
             routes: <RouteBase>[
               GoRoute(
                 path: '/cart',
-                builder: (context, state) => const CartScreen(),
+                // builder: (context, state) => const CartScreen(),
+                pageBuilder: (BuildContext context, GoRouterState state) {
+                  final bool loggedIn = true;
+                  return CustomTransitionPage<void>(
+                    key: state.pageKey,
+                    child: CartScreen(),
+                    barrierDismissible: true,
+                    barrierColor: Colors.black38,
+                    opaque: false,
+                    transitionDuration: const Duration(milliseconds: 500),
+                    reverseTransitionDuration: const Duration(milliseconds: 200),
+                    transitionsBuilder: (
+                        BuildContext context,
+                        Animation<double> animation,
+                        Animation<double> secondaryAnimation,
+                        Widget child,
+                        ) {
+                      return FadeTransition(opacity: animation, child: child);
+                    },
+                  );
+                },
               ),
             ],
           ),
@@ -76,43 +116,174 @@ class AppRouter {
             routes: <RouteBase>[
               GoRoute(
                 path: '/profile',
-                builder: (context, state) {
+                // builder: (context, state) {
+                //   final bool loggedIn = true;
+                //   return loggedIn
+                //       ? const ProfileScreen()
+                //       : const LoginScreen();
+                // },
+                pageBuilder: (BuildContext context, GoRouterState state) {
                   final bool loggedIn = true;
-                  return loggedIn
-                      ? const ProfileScreen()
-                      : const LoginScreen();
+                  return CustomTransitionPage<void>(
+                    key: state.pageKey,
+                    child: loggedIn?const ProfileScreen(): const LoginScreen(),
+                    barrierDismissible: true,
+                    barrierColor: Colors.black38,
+                    opaque: false,
+                    transitionDuration: const Duration(milliseconds: 500),
+                    reverseTransitionDuration: const Duration(milliseconds: 200),
+                    transitionsBuilder: (
+                        BuildContext context,
+                        Animation<double> animation,
+                        Animation<double> secondaryAnimation,
+                        Widget child,
+                        ) {
+                      return FadeTransition(opacity: animation, child: child);
+                    },
+                  );
                 },
                 routes: <RouteBase>[
                   GoRoute(
                     path: 'register',
-                    builder:
-                        (BuildContext context, GoRouterState state) =>
-                        RegisterScreen(),
+                    pageBuilder: (BuildContext context, GoRouterState state) {
+                      return CustomTransitionPage<void>(
+                        key: state.pageKey,
+                        child:  RegisterScreen(),
+                        barrierDismissible: true,
+                        barrierColor: Colors.black38,
+                        opaque: false,
+                        transitionDuration: const Duration(milliseconds: 500),
+                        reverseTransitionDuration: const Duration(milliseconds: 200),
+                        transitionsBuilder: (
+                            BuildContext context,
+                            Animation<double> animation,
+                            Animation<double> secondaryAnimation,
+                            Widget child,
+                            ) {
+                          return FadeTransition(opacity: animation, child: child);
+                        },
+                      );
+                    },
                   ),
+                  // GoRoute(
+                  //   path: 'register',
+                  //   builder:
+                  //       (BuildContext context, GoRouterState state) =>
+                  //       RegisterScreen(),
+                  // ),
                   GoRoute(
                     path: 'login',
-                    builder:
-                        (BuildContext context, GoRouterState state) =>
-                        LoginScreen(),
+                    pageBuilder: (BuildContext context, GoRouterState state) {
+                      return CustomTransitionPage<void>(
+                        key: state.pageKey,
+                        child:  LoginScreen(),
+                        barrierDismissible: true,
+                        barrierColor: Colors.black38,
+                        opaque: false,
+                        transitionDuration: const Duration(milliseconds: 500),
+                        reverseTransitionDuration: const Duration(milliseconds: 200),
+                        transitionsBuilder: (
+                            BuildContext context,
+                            Animation<double> animation,
+                            Animation<double> secondaryAnimation,
+                            Widget child,
+                            ) {
+                          return FadeTransition(opacity: animation, child: child);
+                        },
+                      );
+                    },
                   ),
+                  // GoRoute(
+                  //   path: 'login',
+                  //   builder:
+                  //       (BuildContext context, GoRouterState state) =>
+                  //       LoginScreen(),
+                  // ),
                   GoRoute(
                     path: 'order_history',
-                    builder:
-                        (BuildContext context, GoRouterState state) =>
-                        OrderHistoryScreen(),
+                    pageBuilder: (BuildContext context, GoRouterState state) {
+                      return CustomTransitionPage<void>(
+                        key: state.pageKey,
+                        child:  OrderHistoryScreen(),
+                        barrierDismissible: true,
+                        barrierColor: Colors.black38,
+                        opaque: false,
+                        transitionDuration: const Duration(milliseconds: 500),
+                        reverseTransitionDuration: const Duration(milliseconds: 200),
+                        transitionsBuilder: (
+                            BuildContext context,
+                            Animation<double> animation,
+                            Animation<double> secondaryAnimation,
+                            Widget child,
+                            ) {
+                          return FadeTransition(opacity: animation, child: child);
+                        },
+                      );
+                    },
                   ),
+                  // GoRoute(
+                  //   path: 'order_history',
+                  //   builder:
+                  //       (BuildContext context, GoRouterState state) =>
+                  //       OrderHistoryScreen(),
+                  // ),
                   GoRoute(
                     path: 'edit_screen',
-                    builder:
-                        (BuildContext context, GoRouterState state) =>
-                        EditScreen(),
+                    pageBuilder: (BuildContext context, GoRouterState state) {
+                      return CustomTransitionPage<void>(
+                        key: state.pageKey,
+                        child:  EditScreen(),
+                        barrierDismissible: true,
+                        barrierColor: Colors.black38,
+                        opaque: false,
+                        transitionDuration: const Duration(milliseconds: 500),
+                        reverseTransitionDuration: const Duration(milliseconds: 200),
+                        transitionsBuilder: (
+                            BuildContext context,
+                            Animation<double> animation,
+                            Animation<double> secondaryAnimation,
+                            Widget child,
+                            ) {
+                          return FadeTransition(opacity: animation, child: child);
+                        },
+                      );
+                    },
                   ),
+                  // GoRoute(
+                  //   path: 'edit_screen',
+                  //   builder:
+                  //       (BuildContext context, GoRouterState state) =>
+                  //       EditScreen(),
+                  // ),
+
                   GoRoute(
                     path: 'reset_password',
-                    builder:
-                        (BuildContext context, GoRouterState state) =>
-                            ResetPasswordScreen(),
+                    pageBuilder: (BuildContext context, GoRouterState state) {
+                      return CustomTransitionPage<void>(
+                        key: state.pageKey,
+                        child:  ResetPasswordScreen(),
+                        barrierDismissible: true,
+                        barrierColor: Colors.black38,
+                        opaque: false,
+                        transitionDuration: const Duration(milliseconds: 500),
+                        reverseTransitionDuration: const Duration(milliseconds: 200),
+                        transitionsBuilder: (
+                            BuildContext context,
+                            Animation<double> animation,
+                            Animation<double> secondaryAnimation,
+                            Widget child,
+                            ) {
+                          return FadeTransition(opacity: animation, child: child);
+                        },
+                      );
+                    },
                   ),
+                  // GoRoute(
+                  //   path: 'reset_password',
+                  //   builder:
+                  //       (BuildContext context, GoRouterState state) =>
+                  //           ResetPasswordScreen(),
+                  // ),
                 ],
               ),
             ],
@@ -123,8 +294,31 @@ class AppRouter {
             routes: <RouteBase>[
               GoRoute(
                 path: '/settings',
-                builder: (context, state) => const SettingsScreen(),
+                pageBuilder: (BuildContext context, GoRouterState state) {
+                  return CustomTransitionPage<void>(
+                    key: state.pageKey,
+                    child:  SettingsScreen(),
+                    barrierDismissible: true,
+                    barrierColor: Colors.black38,
+                    opaque: false,
+                    transitionDuration: const Duration(milliseconds: 500),
+                    reverseTransitionDuration: const Duration(milliseconds: 200),
+                    transitionsBuilder: (
+                        BuildContext context,
+                        Animation<double> animation,
+                        Animation<double> secondaryAnimation,
+                        Widget child,
+                        ) {
+                      return FadeTransition(opacity: animation, child: child);
+                    },
+                  );
+                },
               ),
+
+              // GoRoute(
+              //   path: '/settings',
+              //   builder: (context, state) => const SettingsScreen(),
+              // ),
             ],
           ),
         ],
