@@ -2,6 +2,7 @@
 
 import 'package:chefonline/core/common/custom_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class LabelWithTextField extends StatelessWidget {
 
@@ -17,6 +18,8 @@ class LabelWithTextField extends StatelessWidget {
   final int maxLength;
   final int maxLines;
   final VoidCallback? onVisibilityToggle;
+  final VoidCallback? onTap;
+  final List<TextInputFormatter>? inputFormatters;
 
   const LabelWithTextField({
     super.key,
@@ -31,7 +34,9 @@ class LabelWithTextField extends StatelessWidget {
     this.isRequired=false,
     this.maxLines=1,
     this.maxLength=32,
-    this.onVisibilityToggle
+    this.onVisibilityToggle,
+    this.onTap,
+    this.inputFormatters
   });
 
 
@@ -49,6 +54,8 @@ class LabelWithTextField extends StatelessWidget {
            ],
          ),
          CustomTextField(
+           inputFormatters: inputFormatters,
+           onTap: onTap,
            prefixIcon: prefixIcon,
            controller:controller,
            inputType: inputType,

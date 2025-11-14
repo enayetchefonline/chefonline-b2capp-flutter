@@ -55,10 +55,8 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: AppColors.white,
-     // isCollapsed: true,
       isDense: true,
-      constraints: BoxConstraints(maxHeight:40),
-   //   contentPadding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12), // 🔹 reduce this
+      contentPadding: EdgeInsets.symmetric(vertical: 8,horizontal: 12),
       labelStyle: const TextStyle(color: Colors.black87, fontSize: 13), // 🔹 smaller font
       hintStyle: const TextStyle(color: Colors.black45, fontSize: 13),
       border: OutlineInputBorder(
@@ -135,9 +133,8 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: Colors.transparent,
-      isDense: false,
-    //  contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      constraints: BoxConstraints(maxHeight:40),
+      isDense: true,
+      contentPadding: EdgeInsets.symmetric(vertical: 8,horizontal: 12),
       labelStyle: const TextStyle(color: Colors.white70, fontSize: 14),
       hintStyle: const TextStyle(color: Colors.white54, fontSize: 14),
       border: OutlineInputBorder(

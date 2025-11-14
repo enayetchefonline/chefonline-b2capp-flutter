@@ -1,12 +1,10 @@
 import 'dart:convert';
 
 import 'package:chefonline/core/config/app_urls.dart';
-import 'package:chefonline/core/services/user_session_service.dart';
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 
 import 'app_exceptions.dart';
-import 'base_response.dart';
 
 class HttpClientService {
   final Dio _dio;
@@ -27,12 +25,6 @@ class HttpClientService {
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
-          String? token = UserSessionManager.instance.getAuthToken();
-
-          if (token != null && token.isNotEmpty) {
-            options.headers['Authorization'] = 'Bearer $token';
-          }
-
           final buffer = StringBuffer();
           buffer.writeln('┌───── 📤 HTTP REQUEST ─────');
           buffer.writeln('│ ➡️ ${options.method.toUpperCase()} ${options.uri}');
@@ -140,43 +132,6 @@ class HttpClientService {
     }
   }
 
-  // Future<LoginResponse?> _refreshToken() async {
-  //   try {
-  //     String? token = UserSessionManager.instance.getAuthToken();
-  //
-  //     if(token !=null){
-  //       final response = await _dio.post(
-  //         AppUrls.refreshTokenUrl,
-  //         options: Options(
-  //           headers: {
-  //             'Content-Type': 'application/json',
-  //             'Authorization': 'Bearer $token',
-  //           },
-  //         ),
-  //       );
-  //       if (response.statusCode == 200) {
-  //
-  //         final baseResponse = BaseResponse<LoginResponse>.fromJson(
-  //           response.data,
-  //               (json) => LoginResponse.fromJson(json),
-  //         );
-  //
-  //         if (baseResponse.data != null) {
-  //           return baseResponse.data!;
-  //         } else {
-  //           throw AppException("Failed to 8888888888: ${response.statusCode}");
-  //         }
-  //       } else {
-  //         throw AppException("Failed to refresh token. Response: ${response.statusCode}");
-  //       }
-  //     }
-  //
-  //   } catch (e) {
-  //     print("Error refreshing token: $e");
-  //     return null;
-  //   }
-  //   return null;
-  // }
 
 
 }

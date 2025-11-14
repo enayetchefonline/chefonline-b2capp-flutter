@@ -1,7 +1,7 @@
 class AppUrls {
 
-  static const baseUrl = 'https://mpos.chefonlinetest.co.uk/api';
-  // static const deviceTokenVerify = '/restaurant/license-key-verification';
+  static const baseUrl = 'http://chefonlinetest.co.uk/b2c_api/Tigger.php';
+//   static const userRegister = '/restaurant/license-key-verification';
   // static const login = '/restaurant/login';
   // static const customer = '/restaurant/customers';
   // static const categoryFood = '/restaurant/dishes';
